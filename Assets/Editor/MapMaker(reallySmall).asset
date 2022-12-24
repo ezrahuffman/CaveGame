@@ -1,0 +1,3005 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3a744113b86164ab2040fa87cef6db, type: 3}
+  m_Name: MapMaker(reallySmall)
+  m_EditorClassIdentifier: 
+  colorCode: 0
+  testInt: 3
+  common:
+  - {fileID: 11400000, guid: 125902aadde96be4283434e58b3320bf, type: 2}
+  - {fileID: 11400000, guid: 0c1a07ceb7c5aac45a50df38face4cdf, type: 2}
+  uncommon:
+  - {fileID: 11400000, guid: 3d4f2c1f757fd264cba7df988819f486, type: 2}
+  rare:
+  - {fileID: 11400000, guid: 8c94d583fe1144647a0da3c2dd3a509a, type: 2}
+  legendary: []
+  commonChests: -2147483648
+  uncommonChests: -2147483648
+  rareChests: -2147483648
+  legendaryChests: -2147483648
+  maxPerChest: 4
+  tilesPerBlock: 5
+  blockHeight: 3
+  blockWidth: 3
+  height: 15
+  width: 15
+  completePaths: 2
+  incompletePaths: 0
+  winningPaths: 1
+  maxLoops: 200
+  smallestRoom: 4
+  secondRoom: 8
+  thirdRoom: 10
+  centerVertex:
+    i: 7
+    j: 7
+    gameObject: {fileID: 0}
+    prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+      type: 3}
+    objectId: -52410
+    color: {r: 0, g: 1, b: 1, a: 1}
+    position: {x: 140, y: 140, z: 0}
+    visited: 0
+    edge: 0
+    room: 1
+    id: 112
+    weight: 17
+  floor: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26, type: 3}
+  wall: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96, type: 3}
+  endPrefab: {fileID: 2516776286056417720, guid: 08436370ff7fe7441a23ea314765a021,
+    type: 3}
+  EnemyPrefab: {fileID: 2345250763526023912, guid: ce67114a0d9464048b509d5fb2b2e46f,
+    type: 3}
+  lootChest: {fileID: 846463127176563974, guid: 0debc1e93e896da48a8832734fe6bc04,
+    type: 3}
+  graphArray:
+  - nodes:
+    - i: 0
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51906
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 0
+      weight: 65
+    - i: 0
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51910
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 1
+      weight: 204
+    - i: 0
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51914
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 2
+      weight: 106
+    - i: 0
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51918
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 60, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 3
+      weight: 44
+    - i: 0
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51922
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 0, z: 0}
+      visited: 1
+      edge: 1
+      room: 0
+      id: 4
+      weight: 120
+    - i: 0
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52020
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 100, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 5
+      weight: 176
+    - i: 0
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52024
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 6
+      weight: 79
+    - i: 0
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52028
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 140, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 7
+      weight: 195
+    - i: 0
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52032
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 8
+      weight: 16
+    - i: 0
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52036
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 9
+      weight: 182
+    - i: 0
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52134
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 10
+      weight: 200
+    - i: 0
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52138
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 11
+      weight: 133
+    - i: 0
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52142
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 12
+      weight: 16
+    - i: 0
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52146
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 13
+      weight: 108
+    - i: 0
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52150
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 0, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 14
+      weight: 17
+  - nodes:
+    - i: 1
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51926
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 20, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 15
+      weight: 210
+    - i: 1
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51930
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 20, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 16
+      weight: 146
+    - i: 1
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -51934
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 40, y: 20, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 17
+      weight: 16
+    - i: 1
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -51938
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 60, y: 20, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 18
+      weight: 21
+    - i: 1
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -51942
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 80, y: 20, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 19
+      weight: 24
+    - i: 1
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52040
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 100, y: 20, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 20
+      weight: 189
+    - i: 1
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52044
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 20, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 21
+      weight: 177
+    - i: 1
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52048
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 140, y: 20, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 22
+      weight: 169
+    - i: 1
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52052
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 20, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 23
+      weight: 125
+    - i: 1
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52056
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 20, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 24
+      weight: 4
+    - i: 1
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52154
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 20, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 25
+      weight: 110
+    - i: 1
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52158
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 20, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 26
+      weight: 98
+    - i: 1
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52162
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 20, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 27
+      weight: 75
+    - i: 1
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52166
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 20, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 28
+      weight: 77
+    - i: 1
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52170
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 20, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 29
+      weight: 27
+  - nodes:
+    - i: 2
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51946
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 40, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 30
+      weight: 206
+    - i: 2
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51950
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 31
+      weight: 60
+    - i: 2
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -51954
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 40, y: 40, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 32
+      weight: 52
+    - i: 2
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51958
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 60, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 33
+      weight: 108
+    - i: 2
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51962
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 34
+      weight: 186
+    - i: 2
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52060
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 100, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 35
+      weight: 182
+    - i: 2
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52064
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 36
+      weight: 143
+    - i: 2
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52068
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 140, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 37
+      weight: 69
+    - i: 2
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52072
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 38
+      weight: 192
+    - i: 2
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52076
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 39
+      weight: 138
+    - i: 2
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52174
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 40
+      weight: 108
+    - i: 2
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52178
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 41
+      weight: 80
+    - i: 2
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52182
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 42
+      weight: 83
+    - i: 2
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52186
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 40, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 43
+      weight: 141
+    - i: 2
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52190
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 40, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 44
+      weight: 192
+  - nodes:
+    - i: 3
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51966
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 60, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 45
+      weight: 24
+    - i: 3
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51970
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 60, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 46
+      weight: 123
+    - i: 3
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -51974
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 40, y: 60, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 47
+      weight: 51
+    - i: 3
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -51978
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 60, y: 60, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 48
+      weight: 91
+    - i: 3
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51982
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 60, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 49
+      weight: 219
+    - i: 3
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52080
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 100, y: 60, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 50
+      weight: 15
+    - i: 3
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52084
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 60, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 51
+      weight: 10
+    - i: 3
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52088
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 140, y: 60, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 52
+      weight: 35
+    - i: 3
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52092
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 60, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 53
+      weight: 124
+    - i: 3
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52096
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 60, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 54
+      weight: 154
+    - i: 3
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52194
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 60, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 55
+      weight: 166
+    - i: 3
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52198
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 60, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 56
+      weight: 37
+    - i: 3
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52202
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 60, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 57
+      weight: 81
+    - i: 3
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52206
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 60, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 58
+      weight: 111
+    - i: 3
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52210
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 60, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 59
+      weight: 37
+  - nodes:
+    - i: 4
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51986
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 80, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 60
+      weight: 12
+    - i: 4
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51990
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 61
+      weight: 56
+    - i: 4
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -51994
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 62
+      weight: 116
+    - i: 4
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -51998
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 60, y: 80, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 63
+      weight: 95
+    - i: 4
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52002
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 64
+      weight: 165
+    - i: 4
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52100
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 100, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 65
+      weight: 219
+    - i: 4
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52104
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 66
+      weight: 84
+    - i: 4
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52108
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 140, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 67
+      weight: 122
+    - i: 4
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52112
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 68
+      weight: 225
+    - i: 4
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52116
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 69
+      weight: 37
+    - i: 4
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52214
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 70
+      weight: 79
+    - i: 4
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52218
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 71
+      weight: 1
+    - i: 4
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52222
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 72
+      weight: 191
+    - i: 4
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52226
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 80, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 73
+      weight: 158
+    - i: 4
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52230
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 80, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 74
+      weight: 187
+  - nodes:
+    - i: 5
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52248
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 100, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 75
+      weight: 71
+    - i: 5
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52252
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 100, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 76
+      weight: 115
+    - i: 5
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52256
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 100, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 77
+      weight: 166
+    - i: 5
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52260
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 60, y: 100, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 78
+      weight: 128
+    - i: 5
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52264
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 100, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 79
+      weight: 223
+    - i: 5
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52362
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 100, y: 100, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 80
+      weight: 47
+    - i: 5
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52366
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 120, y: 100, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 81
+      weight: 43
+    - i: 5
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52370
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 140, y: 100, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 82
+      weight: 87
+    - i: 5
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52374
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 160, y: 100, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 83
+      weight: 9
+    - i: 5
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52378
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 100, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 84
+      weight: 93
+    - i: 5
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52476
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 100, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 85
+      weight: 192
+    - i: 5
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52480
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 100, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 86
+      weight: 43
+    - i: 5
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52484
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 100, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 87
+      weight: 22
+    - i: 5
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52488
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 100, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 88
+      weight: 224
+    - i: 5
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52492
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 100, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 89
+      weight: 21
+  - nodes:
+    - i: 6
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52268
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 120, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 90
+      weight: 11
+    - i: 6
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52272
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 120, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 91
+      weight: 185
+    - i: 6
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52276
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 120, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 92
+      weight: 196
+    - i: 6
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52280
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 60, y: 120, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 93
+      weight: 159
+    - i: 6
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52284
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 80, y: 120, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 94
+      weight: 7
+    - i: 6
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52382
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 100, y: 120, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 95
+      weight: 76
+    - i: 6
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52386
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 120, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 96
+      weight: 225
+    - i: 6
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52390
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 140, y: 120, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 97
+      weight: 152
+    - i: 6
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52394
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 120, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 98
+      weight: 101
+    - i: 6
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52398
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 180, y: 120, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 99
+      weight: 2
+    - i: 6
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52496
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 120, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 100
+      weight: 161
+    - i: 6
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52500
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 120, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 101
+      weight: 189
+    - i: 6
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52504
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 120, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 102
+      weight: 142
+    - i: 6
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52508
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 120, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 103
+      weight: 191
+    - i: 6
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52512
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 120, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 104
+      weight: 162
+  - nodes:
+    - i: 7
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52288
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 140, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 105
+      weight: 118
+    - i: 7
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52292
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 140, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 106
+      weight: 139
+    - i: 7
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52296
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 140, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 107
+      weight: 141
+    - i: 7
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52300
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 60, y: 140, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 108
+      weight: 192
+    - i: 7
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52304
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 140, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 109
+      weight: 203
+    - i: 7
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52402
+      color: {r: 0, g: 1, b: 1, a: 1}
+      position: {x: 100, y: 140, z: 0}
+      visited: 1
+      edge: 0
+      room: 1
+      id: 110
+      weight: 80
+    - i: 7
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52406
+      color: {r: 0, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 140, z: 0}
+      visited: 1
+      edge: 0
+      room: 1
+      id: 111
+      weight: 56
+    - i: 7
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52410
+      color: {r: 0, g: 1, b: 1, a: 1}
+      position: {x: 140, y: 140, z: 0}
+      visited: 0
+      edge: 0
+      room: 1
+      id: 112
+      weight: 17
+    - i: 7
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52414
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 160, y: 140, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 113
+      weight: 144
+    - i: 7
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52418
+      color: {r: 0, g: 1, b: 0, a: 1}
+      position: {x: 180, y: 140, z: 0}
+      visited: 1
+      edge: 0
+      room: 1
+      id: 114
+      weight: 65
+    - i: 7
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52516
+      color: {r: 0, g: 1, b: 0, a: 1}
+      position: {x: 200, y: 140, z: 0}
+      visited: 1
+      edge: 0
+      room: 1
+      id: 115
+      weight: 7
+    - i: 7
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52520
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 220, y: 140, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 116
+      weight: 11
+    - i: 7
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52524
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 240, y: 140, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 117
+      weight: 139
+    - i: 7
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52528
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 260, y: 140, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 118
+      weight: 56
+    - i: 7
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52532
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 140, z: 0}
+      visited: 1
+      edge: 1
+      room: 0
+      id: 119
+      weight: 146
+  - nodes:
+    - i: 8
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52308
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 160, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 120
+      weight: 215
+    - i: 8
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52312
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 160, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 121
+      weight: 156
+    - i: 8
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52316
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 160, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 122
+      weight: 49
+    - i: 8
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52320
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 60, y: 160, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 123
+      weight: 44
+    - i: 8
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52324
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 160, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 124
+      weight: 60
+    - i: 8
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52422
+      color: {r: 0, g: 1, b: 1, a: 1}
+      position: {x: 100, y: 160, z: 0}
+      visited: 1
+      edge: 0
+      room: 1
+      id: 125
+      weight: 76
+    - i: 8
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52426
+      color: {r: 0, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 160, z: 0}
+      visited: 1
+      edge: 0
+      room: 1
+      id: 126
+      weight: 6
+    - i: 8
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52430
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 140, y: 160, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 127
+      weight: 77
+    - i: 8
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52434
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 160, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 128
+      weight: 137
+    - i: 8
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52438
+      color: {r: 0, g: 1, b: 0, a: 1}
+      position: {x: 180, y: 160, z: 0}
+      visited: 1
+      edge: 0
+      room: 1
+      id: 129
+      weight: 51
+    - i: 8
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52536
+      color: {r: 0, g: 1, b: 0, a: 1}
+      position: {x: 200, y: 160, z: 0}
+      visited: 1
+      edge: 0
+      room: 1
+      id: 130
+      weight: 53
+    - i: 8
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52540
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 160, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 131
+      weight: 31
+    - i: 8
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52544
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 160, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 132
+      weight: 208
+    - i: 8
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52548
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 160, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 133
+      weight: 85
+    - i: 8
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52552
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 160, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 134
+      weight: 57
+  - nodes:
+    - i: 9
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52328
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 180, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 135
+      weight: 206
+    - i: 9
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52332
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 180, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 136
+      weight: 159
+    - i: 9
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52336
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 180, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 137
+      weight: 224
+    - i: 9
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52340
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 60, y: 180, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 138
+      weight: 140
+    - i: 9
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52344
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 180, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 139
+      weight: 186
+    - i: 9
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52442
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 100, y: 180, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 140
+      weight: 23
+    - i: 9
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52446
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 180, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 141
+      weight: 121
+    - i: 9
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52450
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 140, y: 180, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 142
+      weight: 60
+    - i: 9
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52454
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 180, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 143
+      weight: 211
+    - i: 9
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52458
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 180, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 144
+      weight: 86
+    - i: 9
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52556
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 180, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 145
+      weight: 13
+    - i: 9
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52560
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 180, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 146
+      weight: 128
+    - i: 9
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52564
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 180, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 147
+      weight: 121
+    - i: 9
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52568
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 180, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 148
+      weight: 107
+    - i: 9
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52572
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 180, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 149
+      weight: 14
+  - nodes:
+    - i: 10
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52590
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 200, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 150
+      weight: 213
+    - i: 10
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52594
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 200, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 151
+      weight: 35
+    - i: 10
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52598
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 200, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 152
+      weight: 164
+    - i: 10
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52602
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 60, y: 200, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 153
+      weight: 199
+    - i: 10
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52606
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 200, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 154
+      weight: 115
+    - i: 10
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52704
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 100, y: 200, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 155
+      weight: 79
+    - i: 10
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52708
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 200, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 156
+      weight: 208
+    - i: 10
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52712
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 140, y: 200, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 157
+      weight: 141
+    - i: 10
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52716
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 200, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 158
+      weight: 131
+    - i: 10
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52720
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 200, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 159
+      weight: 136
+    - i: 10
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52818
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 200, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 160
+      weight: 152
+    - i: 10
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52822
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 200, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 161
+      weight: 18
+    - i: 10
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52826
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 200, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 162
+      weight: 210
+    - i: 10
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52830
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 200, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 163
+      weight: 82
+    - i: 10
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52834
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 200, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 164
+      weight: 116
+  - nodes:
+    - i: 11
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52610
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 220, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 165
+      weight: 1
+    - i: 11
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52614
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 166
+      weight: 163
+    - i: 11
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52618
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 167
+      weight: 211
+    - i: 11
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52622
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 60, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 168
+      weight: 116
+    - i: 11
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52626
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 169
+      weight: 87
+    - i: 11
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52724
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 100, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 170
+      weight: 184
+    - i: 11
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52728
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 171
+      weight: 70
+    - i: 11
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52732
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 140, y: 220, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 172
+      weight: 133
+    - i: 11
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52736
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 173
+      weight: 54
+    - i: 11
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52740
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 174
+      weight: 80
+    - i: 11
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52838
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 175
+      weight: 177
+    - i: 11
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52842
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 176
+      weight: 15
+    - i: 11
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52846
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 177
+      weight: 180
+    - i: 11
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52850
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 220, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 178
+      weight: 209
+    - i: 11
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52854
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 220, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 179
+      weight: 165
+  - nodes:
+    - i: 12
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52630
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 240, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 180
+      weight: 172
+    - i: 12
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52634
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 181
+      weight: 26
+    - i: 12
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52638
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 182
+      weight: 75
+    - i: 12
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52642
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 60, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 183
+      weight: 134
+    - i: 12
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52646
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 184
+      weight: 214
+    - i: 12
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52744
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 100, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 185
+      weight: 41
+    - i: 12
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52748
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 186
+      weight: 47
+    - i: 12
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52752
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 140, y: 240, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 187
+      weight: 38
+    - i: 12
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52756
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 188
+      weight: 37
+    - i: 12
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52760
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 189
+      weight: 38
+    - i: 12
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52858
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 190
+      weight: 18
+    - i: 12
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52862
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 191
+      weight: 178
+    - i: 12
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52866
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 192
+      weight: 71
+    - i: 12
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52870
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 240, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 193
+      weight: 136
+    - i: 12
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52874
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 240, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 194
+      weight: 106
+  - nodes:
+    - i: 13
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52650
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 260, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 195
+      weight: 201
+    - i: 13
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52654
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 196
+      weight: 105
+    - i: 13
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52658
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 197
+      weight: 62
+    - i: 13
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52662
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 60, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 198
+      weight: 78
+    - i: 13
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52666
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 199
+      weight: 134
+    - i: 13
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52764
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 100, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 200
+      weight: 222
+    - i: 13
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52768
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 201
+      weight: 206
+    - i: 13
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26,
+        type: 3}
+      objectId: -52772
+      color: {r: 0, g: 0, b: 0, a: 1}
+      position: {x: 140, y: 260, z: 0}
+      visited: 1
+      edge: 0
+      room: 0
+      id: 202
+      weight: 20
+    - i: 13
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52776
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 203
+      weight: 201
+    - i: 13
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52780
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 204
+      weight: 137
+    - i: 13
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52878
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 205
+      weight: 104
+    - i: 13
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52882
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 206
+      weight: 137
+    - i: 13
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52886
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 207
+      weight: 20
+    - i: 13
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52890
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 260, z: 0}
+      visited: 0
+      edge: 0
+      room: 0
+      id: 208
+      weight: 192
+    - i: 13
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52894
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 260, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 209
+      weight: 141
+  - nodes:
+    - i: 14
+      j: 0
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52670
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 0, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 210
+      weight: 199
+    - i: 14
+      j: 1
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52674
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 20, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 211
+      weight: 138
+    - i: 14
+      j: 2
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52678
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 40, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 212
+      weight: 107
+    - i: 14
+      j: 3
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52682
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 60, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 213
+      weight: 87
+    - i: 14
+      j: 4
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52686
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 80, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 214
+      weight: 55
+    - i: 14
+      j: 5
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52784
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 100, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 215
+      weight: 53
+    - i: 14
+      j: 6
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52788
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 120, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 216
+      weight: 176
+    - i: 14
+      j: 7
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52792
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 140, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 217
+      weight: 160
+    - i: 14
+      j: 8
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52796
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 160, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 218
+      weight: 72
+    - i: 14
+      j: 9
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52800
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 180, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 219
+      weight: 108
+    - i: 14
+      j: 10
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52898
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 200, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 220
+      weight: 95
+    - i: 14
+      j: 11
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52902
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 220, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 221
+      weight: 203
+    - i: 14
+      j: 12
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52906
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 240, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 222
+      weight: 96
+    - i: 14
+      j: 13
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52910
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 260, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 223
+      weight: 16
+    - i: 14
+      j: 14
+      gameObject: {fileID: 0}
+      prefab: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96,
+        type: 3}
+      objectId: -52914
+      color: {r: 1, g: 1, b: 1, a: 1}
+      position: {x: 280, y: 280, z: 0}
+      visited: 0
+      edge: 1
+      room: 0
+      id: 224
+      weight: 170
+  enemies: []

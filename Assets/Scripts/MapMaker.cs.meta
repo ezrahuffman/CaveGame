@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 7e3a744113b86164ab2040fa87cef6db
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - floor: {fileID: 2516776286056417720, guid: 17a1aed00c4ebfc47b4921a23c58fa26, type: 3}
+  - wall: {fileID: 2516776286056417720, guid: 0e4c7c666c79dec47841611c2478bf96, type: 3}
+  - endPrefab: {fileID: 2516776286056417720, guid: 08436370ff7fe7441a23ea314765a021,
+      type: 3}
+  - lootChest: {fileID: 846463127176563974, guid: 0debc1e93e896da48a8832734fe6bc04,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

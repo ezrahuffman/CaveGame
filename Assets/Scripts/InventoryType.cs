@@ -1,0 +1,1 @@
+public enum InventoryType{Player, Chest, Equipment}
