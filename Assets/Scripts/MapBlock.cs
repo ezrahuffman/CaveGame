@@ -9,6 +9,7 @@ public class MapBlock : MonoBehaviour
     List<Vector3> vertices;
     List<int> triangles;
     public GameObject parentGO;
+    List<Vector3> VerticiesCollide;
 
     void TriangulateSquare(Square square)
     {
@@ -117,7 +118,7 @@ public class MapBlock : MonoBehaviour
 
     public void GenerateMesh(Map map)
     {
-        squareGrid = new SquareGrid(map, map.vertexWidth);
+        squareGrid = new SquareGrid(map, map.vertexWidth, parentGO);
         _squareSize = map.vertexWidth;
         vertices = new List<Vector3>();
         triangles = new List<int>();
@@ -131,55 +132,156 @@ public class MapBlock : MonoBehaviour
             }
         }
 
-        Mesh mesh = new Mesh();
-        parentGO.AddComponent<MeshFilter>();
-        parentGO.AddComponent<MeshRenderer>();
-        parentGO.GetComponent<MeshFilter>().mesh = mesh;
-        mesh.vertices = vertices.ToArray();
-        triangles.Reverse();
-        mesh.triangles = triangles.ToArray();
-        mesh.RecalculateNormals();
-        parentGO.AddComponent<PolygonCollider2D>();
-        
-        UpdatePolygonCollider2D(parentGO.GetComponent<MeshFilter>());
+        if (parentGO.GetComponent<MeshFilter>() == null)
+        {
+
+            Mesh mesh = new Mesh();
+            parentGO.AddComponent<MeshFilter>();
+            parentGO.AddComponent<MeshRenderer>();
+            parentGO.GetComponent<MeshFilter>().mesh = mesh;
+            mesh.vertices = vertices.ToArray();
+            triangles.Reverse();
+            mesh.triangles = triangles.ToArray();
+            mesh.RecalculateNormals();
+            PolygonCollider2D polygonCollider2D = parentGO.AddComponent<PolygonCollider2D>();
+
+            MakeCollisions(mesh, polygonCollider2D);
+            //UpdatePolygonCollider2D(parentGO.GetComponent<MeshFilter>(), 1);
+        }
 
 
     }
 
-    public static void UpdatePolygonCollider2D(MeshFilter meshFilter)
+    void MakeCollisions(Mesh mesh, PolygonCollider2D PC2D)
     {
-        if (meshFilter.sharedMesh == null)
+        VerticiesCollide = mesh.vertices.ToList();
+        //List<Edge> edges = new List<Edge>();
+        //List<Edge> outsideEdges = new List<Edge>();
+        //List<List<Edge>> sortedOutsideEdges = new List<List<Edge>>();
+        List<Edge> edges = GetEdges(mesh.triangles);
+        List<Edge> outsideEdges = FindBoundary(edges, mesh.vertices);
+
+        List<List<Edge>> sortedOutsideEdges = SortEdges(outsideEdges);
+        print(sortedOutsideEdges.Count);
+        Vector2[][] collisionPoints = convertEdgePathsToVector2Arrays(sortedOutsideEdges);
+        PC2D.pathCount = collisionPoints.Length;
+
+        for (int i = 0; i < collisionPoints.Length; i++)
         {
-            Debug.LogWarning(meshFilter.gameObject.name + " has no Mesh set on its MeshFilter component!");
-            return;
+            PC2D.SetPath(i, collisionPoints[i]);
         }
 
-        PolygonCollider2D polygonCollider2D = meshFilter.GetComponent<PolygonCollider2D>();
-        polygonCollider2D.pathCount = 1;
 
-        List<Vector3> vertices = new List<Vector3>();
-        meshFilter.sharedMesh.GetVertices(vertices);
+    }
 
-        var boundaryPath = EdgeHelpers.GetEdges(meshFilter.sharedMesh.triangles).FindBoundary().SortEdges();
-
-        Vector3[] yourVectors = new Vector3[boundaryPath.Count];
-        for (int i = 0; i < boundaryPath.Count; i++)
+    public struct Edge
+    {
+        public int v1;
+        public int v2;
+        public int triangleIndex;
+        public Edge(int aV1, int aV2, int aIndex)
         {
-            yourVectors[i] = vertices[boundaryPath[i].v1];
+            v1 = aV1;
+            v2 = aV2;
+            triangleIndex = aIndex;
         }
-        List<Vector2> newColliderVertices = new List<Vector2>();
+    }
 
-        for (int i = 0; i < yourVectors.Length; i++)
+    public static List<Edge> GetEdges(int[] aIndices)
+    {
+        List<Edge> result = new List<Edge>();
+        for (int i = 0; i < aIndices.Length; i += 3)
         {
-            newColliderVertices.Add(new Vector2(yourVectors[i].x, yourVectors[i].y));
+            int v1 = aIndices[i];
+            int v2 = aIndices[i + 1];
+            int v3 = aIndices[i + 2];
+            result.Add(new Edge(v1, v2, i));
+            result.Add(new Edge(v2, v3, i));
+            result.Add(new Edge(v3, v1, i));
         }
+        return result;
+    }
 
-        Vector2[] newPoints = newColliderVertices.Distinct().ToArray();
+    public static List<Edge> FindBoundary(List<Edge> aEdges, Vector3[] verts)
+    {
+        List<Edge> result = new List<Edge>(aEdges);
+        for (int i = result.Count - 1; i > 0; i--)
+        {
+            for (int n = i - 1; n >= 0; n--)
+            {
+                if (verts[result[i].v1] == verts[result[n].v2] && verts[result[i].v2] == verts[result[n].v1])
+                {
+                    result.RemoveAt(i);
+                    result.RemoveAt(n);
+                    i--;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
 
-        //EditorUtility.SetDirty(polygonCollider2D);
+    public List<List<Edge>> SortEdges(List<Edge> bEdges)
+    {
+        List<Edge> borderEdges = bEdges;
 
-        polygonCollider2D.SetPath(0, newPoints);
-        Debug.Log(meshFilter.gameObject.name + " PolygonCollider2D updated.");
+        List<List<Edge>> paths = new List<List<Edge>>();
+        List<Edge> currentPath = new List<Edge>();
+
+        while (borderEdges.Count > 0)
+        {
+            currentPath.Add(borderEdges[0]);
+            borderEdges.RemoveAt(0);
+            makePath(currentPath, borderEdges);
+            paths.Add(currentPath);
+            currentPath = new List<Edge>();
+            print(borderEdges.Count);
+        }
+        return paths;
+    }
+
+    public void makePath(List<Edge> currentPath, List<Edge> borderEdges)
+    {
+        bool continuePath = true;
+
+        List<Vector3> verts = VerticiesCollide;
+
+        while (continuePath)
+        {
+            for (int i = 0; i < borderEdges.Count; i++)
+            {
+                if (verts[currentPath[currentPath.Count - 1].v2] == verts[borderEdges[i].v1] || verts[currentPath[currentPath.Count - 1].v1] == verts[borderEdges[i].v2])
+                {
+                    currentPath.Add(borderEdges[i]);
+                    borderEdges.RemoveAt(i);
+                    continuePath = true;
+                    break;
+                }
+                else
+                {
+                    continuePath = false;
+                }
+            }
+            if (borderEdges.Count == 0)
+            {
+                continuePath = false;
+            }
+        }
+    }
+
+    public Vector2[][] convertEdgePathsToVector2Arrays(List<List<Edge>> edgePaths)
+    {
+        Vector2[][] collisionPoints = new Vector2[edgePaths.Count][];
+
+        for (int i = 0; i < edgePaths.Count; i++)
+        {
+            collisionPoints[i] = new Vector2[edgePaths[i].Count];
+            for (int j = 0; j < edgePaths[i].Count; j++)
+            {
+                collisionPoints[i][j] = VerticiesCollide[edgePaths[i][j].v1];
+            }
+        }
+        return collisionPoints;
     }
 
 
@@ -252,10 +354,12 @@ public class MapBlock : MonoBehaviour
     {
         public Map map;
         public Square[,] squares;
+        GameObject _parentGO;
 
-        public SquareGrid(Map map, float squareSize)
+        public SquareGrid(Map map, float squareSize, GameObject parentGO)
         {
             this.map = map;
+            _parentGO = parentGO;
             int nodeCountX = map.graphArray.Length;
             int nodeCountY = map.graphArray[0].nodes.Length;
 
@@ -271,12 +375,11 @@ public class MapBlock : MonoBehaviour
             {
                 for (int y = 0; y < nodeCountY; y++)
                 {
-                    Vector3 pos = new Vector3(x * squareSize, y * squareSize, 0);
+                    Vector3 pos = new Vector3(x * squareSize, y * squareSize, 0); 
                     controlNodes[x, y] = new ControlNode(pos, map.graphArray[y].nodes[x].Type == NodeType.wall, squareSize);
                 }
             }
 
-            //TODO: this might not be the right indices, it might be nodeCountX, nodeCountY
             squares = new Square[nodeCountX - 1, nodeCountY - 1];
             for (int x = 0; x < nodeCountX - 1; x++)
             {
@@ -288,104 +391,30 @@ public class MapBlock : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        if (squareGrid != null)
-        {
-            for (int x = 0; x < squareGrid.squares.GetLength(0); x++)
-            {
-                for (int y = 0; y < squareGrid.squares.GetLength(1); y++)
-                {
-                    Gizmos.color = (squareGrid.squares[x, y].topLeft.active) ? Color.black : Color.white;
-                    Gizmos.DrawCube(squareGrid.squares[x, y].topLeft.pos, Vector3.one * .4f);
-                    Gizmos.color = (squareGrid.squares[x, y].topRight.active) ? Color.black : Color.white;
-                    Gizmos.DrawCube(squareGrid.squares[x, y].topRight.pos, Vector3.one * .4f);
-                    Gizmos.color = (squareGrid.squares[x, y].botRight.active) ? Color.black : Color.white;
-                    Gizmos.DrawCube(squareGrid.squares[x, y].botRight.pos, Vector3.one * .4f);
-                    Gizmos.color = (squareGrid.squares[x, y].botLeft.active) ? Color.black : Color.white;
-                    Gizmos.DrawCube(squareGrid.squares[x, y].botLeft.pos, Vector3.one * .4f);
-                    Gizmos.color = Color.grey;
-                    Gizmos.DrawCube(squareGrid.squares[x, y].centerTop.pos, Vector3.one * .15f);
-                    Gizmos.DrawCube(squareGrid.squares[x, y].centerRight.pos, Vector3.one * .15f);
-                    Gizmos.DrawCube(squareGrid.squares[x, y].centerBot.pos, Vector3.one * .15f);
-                    Gizmos.DrawCube(squareGrid.squares[x, y].centerLeft.pos, Vector3.one * .15f);
+    //private void OnDrawGizmos()
+    //{
+    //    if (squareGrid != null)
+    //    {
+    //        for (int x = 0; x < squareGrid.squares.GetLength(0); x++)
+    //        {
+    //            for (int y = 0; y < squareGrid.squares.GetLength(1); y++)
+    //            {
+    //                Gizmos.color = (squareGrid.squares[x, y].topLeft.active) ? Color.black : Color.white;
+    //                Gizmos.DrawCube(squareGrid.squares[x, y].topLeft.pos, Vector3.one * .4f);
+    //                Gizmos.color = (squareGrid.squares[x, y].topRight.active) ? Color.black : Color.white;
+    //                Gizmos.DrawCube(squareGrid.squares[x, y].topRight.pos, Vector3.one * .4f);
+    //                Gizmos.color = (squareGrid.squares[x, y].botRight.active) ? Color.black : Color.white;
+    //                Gizmos.DrawCube(squareGrid.squares[x, y].botRight.pos, Vector3.one * .4f);
+    //                Gizmos.color = (squareGrid.squares[x, y].botLeft.active) ? Color.black : Color.white;
+    //                Gizmos.DrawCube(squareGrid.squares[x, y].botLeft.pos, Vector3.one * .4f);
+    //                Gizmos.color = Color.grey;
+    //                Gizmos.DrawCube(squareGrid.squares[x, y].centerTop.pos, Vector3.one * .15f);
+    //                Gizmos.DrawCube(squareGrid.squares[x, y].centerRight.pos, Vector3.one * .15f);
+    //                Gizmos.DrawCube(squareGrid.squares[x, y].centerBot.pos, Vector3.one * .15f);
+    //                Gizmos.DrawCube(squareGrid.squares[x, y].centerLeft.pos, Vector3.one * .15f);
 
-                }
-            }
-        }
-    }
-}
-
-public static class EdgeHelpers
-{
-    public struct Edge
-    {
-        public int v1;
-        public int v2;
-        public int triangleIndex;
-        public Edge(int aV1, int aV2, int aIndex)
-        {
-            v1 = aV1;
-            v2 = aV2;
-            triangleIndex = aIndex;
-        }
-    }
-
-    public static List<Edge> GetEdges(int[] aIndices)
-    {
-        List<Edge> result = new List<Edge>();
-        for (int i = 0; i < aIndices.Length; i += 3)
-        {
-            int v1 = aIndices[i];
-            int v2 = aIndices[i + 1];
-            int v3 = aIndices[i + 2];
-            result.Add(new Edge(v1, v2, i));
-            result.Add(new Edge(v2, v3, i));
-            result.Add(new Edge(v3, v1, i));
-        }
-        return result;
-    }
-
-    public static List<Edge> FindBoundary(this List<Edge> aEdges)
-    {
-        List<Edge> result = new List<Edge>(aEdges);
-        for (int i = result.Count - 1; i > 0; i--)
-        {
-            for (int n = i - 1; n >= 0; n--)
-            {
-                if (result[i].v1 == result[n].v2 && result[i].v2 == result[n].v1)
-                {
-                    // shared edge so remove both
-                    result.RemoveAt(i);
-                    result.RemoveAt(n);
-                    i--;
-                    break;
-                }
-            }
-        }
-        return result;
-    }
-    public static List<Edge> SortEdges(this List<Edge> aEdges)
-    {
-        List<Edge> result = new List<Edge>(aEdges);
-        for (int i = 0; i < result.Count - 2; i++)
-        {
-            Edge E = result[i];
-            for (int n = i + 1; n < result.Count; n++)
-            {
-                Edge a = result[n];
-                if (E.v2 == a.v1)
-                {
-                    // in this case they are already in order so just continoue with the next one
-                    if (n == i + 1)
-                        break;
-                    // if we found a match, swap them with the next one after "i"
-                    result[n] = result[i + 1];
-                    result[i + 1] = a;
-                    break;
-                }
-            }
-        }
-        return result;
-    }
+    //            }
+    //        }
+    //    }
+    //}
 }

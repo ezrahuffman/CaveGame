@@ -244,6 +244,10 @@ public class MapMaker : ScriptableObject
         //store information in gameObject
         StoreInfo(map);
 
+        MapBlock mapBlock = new MapBlock();
+        mapBlock.parentGO = map.gameObject;
+        mapBlock.GenerateMesh(map);
+
         timer = Time.realtimeSinceStartup - timer;
         Debug.Log("MapMaker took: " + timer + "s");
     }
@@ -990,7 +994,8 @@ public class MapMaker : ScriptableObject
                 //get current node
                 Node curNode = graphArray[node.I + i].nodes[node.J + j];
                 //instantiate game object of node
-                curNode.gameObject = new GameObject();//Instantiate(curNode.prefab, curNode.position, Quaternion.identity);
+                //curNode.gameObject = new GameObject();//Instantiate(curNode.prefab, curNode.position, Quaternion.identity);
+                curNode.gameObject = new GameObject();
 
                 //save object id so it can be recovered later
                 curNode.objectId = curNode.gameObject.GetInstanceID();
@@ -1014,10 +1019,10 @@ public class MapMaker : ScriptableObject
         }
 
         //TODO: This is also stupid fix the way that generate mesh takes in these values, or have an overload for nodelist and vertexWidth
-        blockMap.graphArray = nodeLists.ToArray();
-        blockMap.vertexWidth = vertexWidth;
-        block.parentGO = parent;
-        block.GenerateMesh(blockMap);
+        //blockMap.graphArray = nodeLists.ToArray();
+        //blockMap.vertexWidth = vertexWidth;
+        //block.parentGO = parent;
+        //block.GenerateMesh(blockMap);
         return parent;
 
         //hide block after drawing
