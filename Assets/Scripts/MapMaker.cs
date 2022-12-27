@@ -54,6 +54,7 @@ public class MapMaker : ScriptableObject
     private GameController gameController;
 
     public int winningPaths;        //the number of possible winning paths
+    [SerializeField]
     private int winningCount = 0;   //keep track of the winning paths
 
     private int compPathsCount = 0;
@@ -110,6 +111,7 @@ public class MapMaker : ScriptableObject
     {
         CreateItemDictionaries();
 
+        winningCount = 0;
 
 
         float timer = Time.realtimeSinceStartup;
@@ -418,7 +420,6 @@ public class MapMaker : ScriptableObject
             }
             else
             {
-                Debug.Log("Created End");
                 end.prefab = endPrefab;
                 end.Type = NodeType.end;
                 end.color = Color.blue;
@@ -992,7 +993,7 @@ public class MapMaker : ScriptableObject
                 //instantiate game object of node
                 //curNode.gameObject = new GameObject();//Instantiate(curNode.prefab, curNode.position, Quaternion.identity);
                 //TODO: the floor needs to be handled in a better way probably
-                if (curNode.prefab == floor)
+                if (curNode.prefab == floor || curNode.prefab == endPrefab)
                 {
                     curNode.gameObject = Instantiate(curNode.prefab, curNode.position, Quaternion.identity);
                 }
