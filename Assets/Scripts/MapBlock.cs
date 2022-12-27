@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class MapBlock : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class MapBlock : MonoBehaviour
     List<int> triangles;
     public GameObject parentGO;
     List<Vector3> VerticiesCollide;
+    SpriteRenderer m_Sr;
+
+    private static BindingFlags accessFlagsPrivate =
+        BindingFlags.NonPublic | BindingFlags.Instance;
 
     void TriangulateSquare(Square square)
     {
@@ -123,7 +129,6 @@ public class MapBlock : MonoBehaviour
         vertices = new List<Vector3>();
         triangles = new List<int>();
 
-        Debug.Log($"{_squareSize}");
         for (int x = 0; x < squareGrid.squares.GetLength(0); x++)
         {
             for (int y = 0; y < squareGrid.squares.GetLength(1); y++)
@@ -136,9 +141,9 @@ public class MapBlock : MonoBehaviour
         {
 
             Mesh mesh = new Mesh();
-            parentGO.AddComponent<MeshFilter>();
-            parentGO.AddComponent<MeshRenderer>();
-            parentGO.GetComponent<MeshFilter>().mesh = mesh;
+            //parentGO.AddComponent<MeshFilter>();
+            //parentGO.AddComponent<MeshRenderer>();
+            //parentGO.GetComponent<MeshFilter>().mesh = mesh;
             mesh.vertices = vertices.ToArray();
             triangles.Reverse();
             mesh.triangles = triangles.ToArray();
@@ -146,12 +151,17 @@ public class MapBlock : MonoBehaviour
             PolygonCollider2D polygonCollider2D = parentGO.AddComponent<PolygonCollider2D>();
 
             MakeCollisions(mesh, polygonCollider2D);
-            //UpdatePolygonCollider2D(parentGO.GetComponent<MeshFilter>(), 1);
+            map.mesh = mesh;
+
+            
         }
 
 
     }
 
+    
+
+    #region Generate Collider
     void MakeCollisions(Mesh mesh, PolygonCollider2D PC2D)
     {
         VerticiesCollide = mesh.vertices.ToList();
@@ -268,22 +278,40 @@ public class MapBlock : MonoBehaviour
             }
         }
     }
+    
+    private static FieldInfo shapePathField = typeof(ShadowCaster2D).GetField("m_ShapePath", accessFlagsPrivate);
+    private static FieldInfo meshHashField = typeof(ShadowCaster2D).GetField("m_ShapePathHash", accessFlagsPrivate);
 
     public Vector2[][] convertEdgePathsToVector2Arrays(List<List<Edge>> edgePaths)
     {
         Vector2[][] collisionPoints = new Vector2[edgePaths.Count][];
+        
 
         for (int i = 0; i < edgePaths.Count; i++)
         {
             collisionPoints[i] = new Vector2[edgePaths[i].Count];
+            GameObject gO = new GameObject("Shadow_" + i);
+            gO.AddComponent<PolygonCollider2D>();
+            List<Vector3> verts = new List<Vector3>();
             for (int j = 0; j < edgePaths[i].Count; j++)
             {
                 collisionPoints[i][j] = VerticiesCollide[edgePaths[i][j].v1];
+                verts.Add(collisionPoints[i][j]);
             }
+            gO.GetComponent<PolygonCollider2D>().pathCount = 1;
+            gO.GetComponent<PolygonCollider2D>().SetPath(0, collisionPoints[i]);
+            
+            //This is where the actual shadows are modified
+            //TODO: need to make the cave walls into better shadow shapes, not sure about the best way to do this.
+            var shadow = gO.AddComponent<ShadowCaster2D>();
+            shadow.selfShadows = true;
+            shapePathField.SetValue(shadow, verts.ToArray());
+            // invalidate the hash so it re-generates the shadow mesh on the next Update()
+            meshHashField.SetValue(shadow, -1);
         }
         return collisionPoints;
     }
-
+    #endregion
 
 
     public class Node

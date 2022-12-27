@@ -977,11 +977,7 @@ public class MapMaker : ScriptableObject
 
         //create empty game object as parent
         GameObject parent = new GameObject();
-        parent.AddComponent<MapBlock>();
-        MapBlock block = parent.GetComponent<MapBlock>();
-        Map blockMap = new Map();
 
-        List<NodeList> nodeLists = new List<NodeList>();
         //set parent to single game object
         parent.transform.parent = bigParent.transform;
         //Draw the 40X40 block of nodes starting at the given node (current node is the bot left)
@@ -995,7 +991,15 @@ public class MapMaker : ScriptableObject
                 Node curNode = graphArray[node.I + i].nodes[node.J + j];
                 //instantiate game object of node
                 //curNode.gameObject = new GameObject();//Instantiate(curNode.prefab, curNode.position, Quaternion.identity);
-                curNode.gameObject = new GameObject();
+                //TODO: the floor needs to be handled in a better way probably
+                if (curNode.prefab == floor)
+                {
+                    curNode.gameObject = Instantiate(curNode.prefab, curNode.position, Quaternion.identity);
+                }
+                else
+                {
+                    curNode.gameObject = new GameObject();
+                }
 
                 //save object id so it can be recovered later
                 curNode.objectId = curNode.gameObject.GetInstanceID();
@@ -1011,11 +1015,6 @@ public class MapMaker : ScriptableObject
                 curNode.gameObject.transform.parent = parent.transform;
                 nodeList.Add(node);
             }
-
-            //TODO: this is fucking stupid fix it
-            NodeList realList = new NodeList();
-            realList.nodes = nodeList.ToArray();
-            nodeLists.Add(realList);
         }
 
         //TODO: This is also stupid fix the way that generate mesh takes in these values, or have an overload for nodelist and vertexWidth
@@ -1024,9 +1023,6 @@ public class MapMaker : ScriptableObject
         //block.parentGO = parent;
         //block.GenerateMesh(blockMap);
         return parent;
-
-        //hide block after drawing
-        //parent.SetActive(false);
     }
 
     
