@@ -6,7 +6,8 @@ public class PlayerStats : CharacterStats
 {
     public int lives = 3;   //default number of lives to three
 
-    public Stat torchBurn;  //rate at which the torch burns
+    [HideInInspector]
+    public Stat torchBurn;  //rate at which the torch burns (this is always one and should not be modified) instead modify torch modifiers
     [Range(0f, 500f)]
     public float torchLife = 100f;
     private float burnTick;
@@ -164,7 +165,8 @@ public class PlayerStats : CharacterStats
     {
         while (true)
         {
-            burnTick = 1f / (float)torchBurn.GetValue;
+            burnTick =  (float)torchBurn.GetValue;
+            Debug.Log($"torchlife ({torchLife}) - burnTick ({burnTick}) = {torchLife - burnTick}");
             torchLife -= burnTick;
             if(torchLife <= 0)
             {

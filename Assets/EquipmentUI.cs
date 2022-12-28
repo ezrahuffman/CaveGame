@@ -59,7 +59,7 @@ public class EquipmentUI : MonoBehaviour
 
     void UpdateUI()
     {
-        Debug.Log("update UI");
+
         //Debug.Log($"Update Equipment UI: {PrintArr(equipmentManager.currentEquipment)}");
         int i = 0;
         //add items to slots
