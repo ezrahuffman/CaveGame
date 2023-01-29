@@ -4,8 +4,11 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class PlayerController : MonoBehaviour
 {
     //Variables
-    public bool relativeMovement;
-    public float movementSpeed;
+    public bool relativeMovement;       //If true the players movement is relative to the direction the character is facing
+    //public float movementSpeed;
+    public float movementAccRate;       //Rate at which the player accellerates
+    public float movementDeccRate;       //Rate at which the player slows down when not giving movement inputs
+    public float maxMovementSpeed;      //Maximum speed the player can reach
     public float rotSmooth;
     public GameObject playerObject;
     public Light2D torch;
@@ -212,8 +215,34 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //move character
-        rb.velocity = velocity.normalized * movementSpeed;
+        Debug.Log($"Velocity: {rb.velocity} | Size: {rb.velocity.magnitude}");
+
+        bool hasMovementInput = velocity.magnitude != 0;
+        bool shouldStop = rb.velocity.magnitude <= movementDeccRate;
+
+        //If the player is not giving input and shouldn't stop this frame, slow to a stop
+        if (!hasMovementInput && !shouldStop)
+        {
+            velocity = rb.velocity.normalized * -1 * movementDeccRate;
+        }
+        else
+        {
+            velocity = velocity.normalized * movementAccRate;
+        }
+
+        //move character by adding input velocity to current velocity
+        rb.velocity += velocity;
+
+        if(rb.velocity.magnitude > maxMovementSpeed)
+        {
+            rb.velocity = rb.velocity.normalized * maxMovementSpeed;
+        }
+
+        //Make sure the player stops
+        if(shouldStop && !hasMovementInput)
+        {
+            rb.velocity = Vector2.zero;
+        }
         
         //look toward mouse
         transform.up = lookDir;
