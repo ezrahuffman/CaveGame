@@ -263,6 +263,8 @@ public class MapMaker : ScriptableObject
         map.blockHeight = blockHeight;
         map.tilesPerBlock = tilesPerBlock;
         map.vertexWidth = vertexWidth;
+        map.GenerateDictionary();   // sorts tiles 
+        //TODO: GenerateDictionary passes over the entire map again. Could be optimized by sorting tiles another way
     }
 
     //create dictionaries from the item lists
