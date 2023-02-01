@@ -50,8 +50,9 @@ public class RenderController : MonoBehaviour
         botRow = new Node[3];
 
         Debug.Log(gameObject.GetInstanceID());
-
-        mapMaker = GameObject.Find("map").GetComponent<Map>();
+        GameObject map_GO = GameObject.Find("map");
+        if (!map_GO) { return; }
+        mapMaker = map_GO.GetComponent<Map>();
         graph = mapMaker.Graph;
         graphWidth = mapMaker.blockWidth * mapMaker.tilesPerBlock;
         graphHeight = mapMaker.blockHeight * mapMaker.tilesPerBlock;
@@ -130,6 +131,12 @@ public class RenderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If there is not a map, don't check for bounds
+        if (!mapMaker)
+        {
+            return;
+        }
+
         //find and check current window bounds against the edges of the current 40X40 block
 
         //get window width and height

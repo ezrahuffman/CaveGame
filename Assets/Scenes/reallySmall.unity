@@ -1870,6 +1870,11 @@ MonoBehaviour:
   canAttack: 1
   attackDelay: 1
   attackSpeed: 1
+  maxDashDistance: 20
+  dashDeccRate: 60
+  dashAccRate: 30
+  dashChargeTime: 1.5
+  maxDashSpeed: 100
 --- !u!4 &211223376
 Transform:
   m_ObjectHideFlags: 0

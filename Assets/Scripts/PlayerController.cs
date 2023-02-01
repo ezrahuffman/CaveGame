@@ -5,7 +5,6 @@ public class PlayerController : MonoBehaviour
 {
     //Variables
     public bool relativeMovement;       //If true the players movement is relative to the direction the character is facing
-    //public float movementSpeed;
     public float movementAccRate;       //Rate at which the player accellerates
     public float movementDeccRate;       //Rate at which the player slows down when not giving movement inputs
     public float maxMovementSpeed;      //Maximum speed the player can reach
@@ -13,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerObject;
     public Light2D torch;
 
+    private bool dashing = false;
     private bool upKey = false;
     private bool downKey = false;
     private bool rightKey = false;
@@ -94,6 +94,15 @@ public class PlayerController : MonoBehaviour
             Attack();
         }
 
+        if (Input.GetButtonDown("Dash") && !dashing)
+        {
+            StartDash();
+        }
+        if (Input.GetButtonUp("Dash"))
+        {
+            _releaseDash = true;
+        }
+
         if(!moving && rb.velocity.magnitude > .1f)
         {
             moving = true;
@@ -165,6 +174,13 @@ public class PlayerController : MonoBehaviour
         // Get the direction from the player to the mouse
         Vector2 lookDir = ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position).normalized;
 
+        if (dashing)
+        {
+            Dash(lookDir);
+            return; // don't do anything else if dashing
+        }
+
+
         //movement
         if (upKey)
         {
@@ -215,7 +231,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        Debug.Log($"Velocity: {rb.velocity} | Size: {rb.velocity.magnitude}");
+        //Debug.Log($"Velocity: {rb.velocity} | Size: {rb.velocity.magnitude}");
 
         bool hasMovementInput = velocity.magnitude != 0;
         bool shouldStop = rb.velocity.magnitude <= movementDeccRate;
@@ -247,6 +263,77 @@ public class PlayerController : MonoBehaviour
         //look toward mouse
         transform.up = lookDir;
         
+    }
+
+    private Vector2 _dashStartPos;
+    private float _dashStartTime;
+    private bool _releaseDash;
+    private float _resetMaxDash;
+
+    public float maxDashDistance;
+    public float dashDeccRate;
+    public float dashAccRate;
+    public float dashChargeTime;
+    public float maxDashSpeed;
+
+    //When player enters dash by hitting dash key
+    private void StartDash()
+    {
+        Debug.Log("Start dash");
+        dashing = true;
+        _dashStartPos = rb.transform.position;
+        _dashStartTime = Time.time;
+        _releaseDash = false;
+        _resetMaxDash = maxDashDistance;
+    }
+
+    //TODO: should end dash if colliding with something 
+    private void Dash(Vector2 lookDir)
+    {
+        Debug.Log("Dash");
+        float dashTime = Time.time - _dashStartTime;
+        float speed = rb.velocity.magnitude;
+        float dashDistance = ((Vector2)rb.transform.position - _dashStartPos).magnitude;
+
+        //slow down after dash
+        if(dashDistance > maxDashDistance)
+        {
+            rb.velocity += rb.velocity.normalized * -1 * dashDeccRate;
+            maxDashDistance = float.MinValue;
+        }
+
+        //slowed down to normal speed
+        if(rb.velocity.magnitude - maxMovementSpeed < dashDeccRate && dashDistance > maxDashDistance)
+        {
+            EndDash();
+            return;
+        }
+
+        //charge up (slow/pause)
+        //Can aim while charging
+        if(dashTime < dashChargeTime && !_releaseDash)
+        {
+            //TODO: check that this locks player rotation after charging time
+            transform.up = lookDir;
+        }
+
+
+        //Super fast accelleration (maybe instant)
+        if((dashTime > dashChargeTime || _releaseDash) && speed < maxDashSpeed && dashDistance < maxDashDistance)
+        {
+            rb.velocity += (Vector2)transform.up * dashAccRate;
+            Debug.Log("release");
+        }
+
+
+    }
+
+    void EndDash()
+    {
+        Debug.Log("end dash");
+        dashing = false;
+        _releaseDash = false;
+        maxDashDistance = _resetMaxDash;
     }
 
 
