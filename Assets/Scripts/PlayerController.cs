@@ -174,64 +174,65 @@ public class PlayerController : MonoBehaviour
         // Get the direction from the player to the mouse
         Vector2 lookDir = ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position).normalized;
 
-        if (dashing)
+        
+        if (!dashing)
+        {
+            //movement
+            if (upKey)
+            {
+                if (relativeMovement)
+                {
+                    velocity += lookDir;
+                }
+                else
+                {
+                    //add velocity up
+                    velocity += (Vector2.up);// * movementSpeed);
+                }
+            }
+            if (leftKey)
+            {
+                if (relativeMovement)
+                {
+                    velocity += Vector2.Perpendicular(lookDir);
+                }
+                else
+                {
+                    //add velocity left
+                    velocity += (Vector2.left);// * movementSpeed);
+                }
+            }
+            if (rightKey)
+            {
+                if (relativeMovement)
+                {
+                    velocity += Vector2.Perpendicular(lookDir) * -1;
+                }
+                else
+                {
+                    //add right velocity
+                    velocity += (Vector2.right);// * movementSpeed);
+                }
+            }
+            if (downKey)
+            {
+                if (relativeMovement)
+                {
+                    velocity += lookDir * -1;
+                }
+                else
+                {
+                    //add down velocity
+                    velocity += (Vector2.down);// * movementSpeed);
+                }
+            }
+        }else
         {
             Dash(lookDir);
-            return; // don't do anything else if dashing
+            return;
         }
 
-
-        //movement
-        if (upKey)
-        {
-            if (relativeMovement)
-            {
-                velocity += lookDir;
-            }
-            else
-            {
-                //add velocity up
-                velocity += (Vector2.up);// * movementSpeed);
-            }
-        }
-        if (leftKey)
-        {
-            if (relativeMovement)
-            {
-                velocity += Vector2.Perpendicular(lookDir);
-            }
-            else
-            {
-                //add velocity left
-                velocity += (Vector2.left);// * movementSpeed);
-            }
-        }
-        if (rightKey)
-        {
-            if (relativeMovement)
-            {
-                velocity += Vector2.Perpendicular(lookDir) * -1;
-            }
-            else
-            {
-                //add right velocity
-                velocity += (Vector2.right);// * movementSpeed);
-            }
-        }
-        if (downKey)
-        {
-            if (relativeMovement)
-            {
-                velocity += lookDir * -1;
-            }
-            else
-            {
-                //add down velocity
-                velocity += (Vector2.down);// * movementSpeed);
-            }
-        }
-
-        //Debug.Log($"Velocity: {rb.velocity} | Size: {rb.velocity.magnitude}");
+        Debug.Log($"Velocity: {rb.velocity} | Size: {rb.velocity.magnitude}");
 
         bool hasMovementInput = velocity.magnitude != 0;
         bool shouldStop = rb.velocity.magnitude <= movementDeccRate;
@@ -239,6 +240,7 @@ public class PlayerController : MonoBehaviour
         //If the player is not giving input and shouldn't stop this frame, slow to a stop
         if (!hasMovementInput && !shouldStop)
         {
+
             velocity = rb.velocity.normalized * -1 * movementDeccRate;
         }
         else
@@ -315,7 +317,16 @@ public class PlayerController : MonoBehaviour
         {
             //TODO: check that this locks player rotation after charging time
             transform.up = lookDir;
+            if (rb.velocity.magnitude > movementDeccRate)
+            {
+                rb.velocity += rb.velocity.normalized * -1 * movementDeccRate;
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
+    
 
 
         //Super fast accelleration (maybe instant)
