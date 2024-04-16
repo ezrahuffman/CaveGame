@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class MapBlock : MonoBehaviour
 {
@@ -13,6 +13,7 @@ public class MapBlock : MonoBehaviour
     public GameObject parentGO;
     List<Vector3> VerticiesCollide;
     SpriteRenderer m_Sr;
+    LayerMask textureMask = LayerMask.NameToLayer("TextureLayer"); // this should only be used for rendering the mesh texture, not anything else
 
     private static BindingFlags accessFlagsPrivate =
         BindingFlags.NonPublic | BindingFlags.Instance;
@@ -145,13 +146,30 @@ public class MapBlock : MonoBehaviour
             //parentGO.AddComponent<MeshRenderer>();
             //parentGO.GetComponent<MeshFilter>().mesh = mesh;
             mesh.vertices = vertices.ToArray();
-            triangles.Reverse();
+            //triangles.Reverse();
             mesh.triangles = triangles.ToArray();
+            Debug.Log("Mesh uvs");
+            foreach (var v in mesh.uv)
+            {
+                print(v);
+            }
             mesh.RecalculateNormals();
             PolygonCollider2D polygonCollider2D = parentGO.AddComponent<PolygonCollider2D>();
 
             MakeCollisions(mesh, polygonCollider2D);
+            mesh.RecalculateNormals();
+            mesh.RecalculateTangents();
             map.mesh = mesh;
+            map.gameObject.layer = textureMask;
+
+            Sprite sprite = ConvertMeshToSprite(mesh, 1024, 1024);
+            SpriteRenderer spriteRenderer = map.GetComponent<SpriteRenderer>();
+            if(spriteRenderer == null)
+            {
+                spriteRenderer = map.gameObject.AddComponent<SpriteRenderer>();
+            }
+            spriteRenderer.sprite = sprite;
+            FindObjectOfType<GameController>().GetComponent<MeshFilter>().mesh = mesh;
 
             
 
@@ -160,7 +178,47 @@ public class MapBlock : MonoBehaviour
 
     }
 
-    
+    public Sprite ConvertMeshToSprite(Mesh mesh, int width, int height)
+    {
+        // Create a temporary RenderTexture
+        var renderTexture = new RenderTexture(width, height, 0, RenderTextureFormat.ARGB32);
+        renderTexture.Create();
+
+        // Create a temporary camera
+        var camera = new GameObject("MeshToSpriteCamera").AddComponent<Camera>();
+        camera.transform.position = new Vector3(squareGrid.map.centerVertex.X, squareGrid.map.centerVertex.Y, -10);
+        camera.orthographicSize = 140f;
+        camera.orthographic = true;
+        camera.nearClipPlane = 0.1f;
+        camera.farClipPlane = 10f;
+        camera.targetTexture = renderTexture;
+
+        // Set up layer mask (optional)
+        Debug.Log($"Texture mask: {textureMask.value}");
+        camera.cullingMask = 1 << textureMask.value;
+
+        // Render the mesh
+        camera.Render();
+
+        // Read pixels from RenderTexture
+        RenderTexture.active = renderTexture;
+        var pixelsRect = new Rect(0, 0, width, height);
+        Texture2D spriteTexture = new Texture2D(width, height);
+        spriteTexture.ReadPixels(pixelsRect, 0, 0);
+        spriteTexture.Apply();
+
+        // Clean up temporary objects
+        //DestroyImmediate(camera.gameObject);
+        //RenderTexture.active = null;
+        //DestroyImmediate(renderTexture);
+
+        // Create a sprite from the texture
+        var sprite = Sprite.Create(spriteTexture, new Rect(0, 0, width, height), new Vector2(0.5f, 0.5f));
+
+        return sprite;
+    }
+
+
 
     #region Generate Collider
     void MakeCollisions(Mesh mesh, PolygonCollider2D PC2D)
@@ -280,8 +338,8 @@ public class MapBlock : MonoBehaviour
         }
     }
     
-    private static FieldInfo shapePathField = typeof(ShadowCaster2D).GetField("m_ShapePath", accessFlagsPrivate);
-    private static FieldInfo meshHashField = typeof(ShadowCaster2D).GetField("m_ShapePathHash", accessFlagsPrivate);
+    private static FieldInfo shapePathField = typeof(UnityEngine.Rendering.Universal.ShadowCaster2D).GetField("m_ShapePath", accessFlagsPrivate);
+    private static FieldInfo meshHashField = typeof(UnityEngine.Rendering.Universal.ShadowCaster2D).GetField("m_ShapePathHash", accessFlagsPrivate);
 
     public Vector2[][] convertEdgePathsToVector2Arrays(List<List<Edge>> edgePaths)
     {
@@ -304,7 +362,7 @@ public class MapBlock : MonoBehaviour
             
             //This is where the actual shadows are modified
             //TODO: need to make the cave walls into better shadow shapes, not sure about the best way to do this.
-            var shadow = gO.AddComponent<ShadowCaster2D>();
+            var shadow = gO.AddComponent<UnityEngine.Rendering.Universal.ShadowCaster2D>();
             shadow.selfShadows = true;
             shapePathField.SetValue(shadow, verts.ToArray());
             // invalidate the hash so it re-generates the shadow mesh on the next Update()

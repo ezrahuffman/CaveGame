@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using System.Linq;
 using System.Collections;
 
@@ -10,7 +10,7 @@ public class ShadowCreater : MonoBehaviour
     HashSet<Collider2D> shapes;
     HashSet<Collider2D> newList;
 
-    public Light2D torchLight;
+    public UnityEngine.Rendering.Universal.Light2D torchLight;
 
     public LayerMask layerMask;
     public LayerMask testLayer;
@@ -28,12 +28,12 @@ public class ShadowCreater : MonoBehaviour
     public float cornerDelta = .1f;   //how much the corner check for isVisable should be moved
 
 
-    Dictionary<ShadowCaster2D, Transform> parentDict;
+    Dictionary<UnityEngine.Rendering.Universal.ShadowCaster2D, Transform> parentDict;
     
 
     private void Awake()
     {
-        parentDict = new Dictionary<ShadowCaster2D, Transform>();
+        parentDict = new Dictionary<UnityEngine.Rendering.Universal.ShadowCaster2D, Transform>();
         shadows = new List<GameObject>();
         usedShadows = new List<GameObject>();
         usedParents = new List<GameObject>();
@@ -87,7 +87,7 @@ public class ShadowCreater : MonoBehaviour
             //Determine Shadow Parent
             GameObject groupParent;
 
-            if (shadow.transform.parent.GetComponent<CompositeShadowCaster2D>() != null)
+            if (shadow.transform.parent.GetComponent<UnityEngine.Rendering.Universal.CompositeShadowCaster2D>() != null)
             {
                 groupParent = shadow.transform.parent.gameObject;
             }
@@ -95,7 +95,7 @@ public class ShadowCreater : MonoBehaviour
             {
                 //create parent object for shadows
                 groupParent = new GameObject("ShadowParent");
-                groupParent.AddComponent<CompositeShadowCaster2D>();
+                groupParent.AddComponent<UnityEngine.Rendering.Universal.CompositeShadowCaster2D>();
 
                 usedParents.Add(groupParent);
             }
@@ -183,11 +183,11 @@ public class ShadowCreater : MonoBehaviour
         //{
         //    points = ((PolygonCollider2D)coll).points;
         //}
-        ShadowCaster2D caster;
-        if (coll.GetComponent<ShadowCaster2D>() == null)
+        UnityEngine.Rendering.Universal.ShadowCaster2D caster;
+        if (coll.GetComponent<UnityEngine.Rendering.Universal.ShadowCaster2D>() == null)
         {
 
-            caster = coll.gameObject.AddComponent<ShadowCaster2D>();
+            caster = coll.gameObject.AddComponent<UnityEngine.Rendering.Universal.ShadowCaster2D>();
 
             //create new object to hold shadow and group using parent
             if (!parentDict.ContainsKey(caster))
@@ -199,7 +199,7 @@ public class ShadowCreater : MonoBehaviour
             caster.selfShadows = false;
         } else if(shapes.Contains(coll))
         {
-            caster = coll.GetComponent<ShadowCaster2D>();
+            caster = coll.GetComponent<UnityEngine.Rendering.Universal.ShadowCaster2D>();
             //create new object to hold shadow and group using parent
             if (!parentDict.ContainsKey(caster))
             {
@@ -214,7 +214,7 @@ public class ShadowCreater : MonoBehaviour
         else
         {
 
-            caster = coll.GetComponent<ShadowCaster2D>();
+            caster = coll.GetComponent<UnityEngine.Rendering.Universal.ShadowCaster2D>();
             //create new object to hold shadow and group using parent
             if (!parentDict.ContainsKey(caster))
             {
@@ -235,7 +235,7 @@ public class ShadowCreater : MonoBehaviour
         foreach(var shape in shapes)
         {
             
-            ShadowCaster2D caster = shape.gameObject.GetComponent<ShadowCaster2D>();
+            UnityEngine.Rendering.Universal.ShadowCaster2D caster = shape.gameObject.GetComponent<UnityEngine.Rendering.Universal.ShadowCaster2D>();
             if (caster != null)
             {
                 caster.enabled = false;
@@ -254,7 +254,7 @@ public class ShadowCreater : MonoBehaviour
             int childCountBefore = parent.transform.childCount;
 
             //reparent children that are no longer visable
-            foreach (var child in parent.GetComponentsInChildren<ShadowCaster2D>())
+            foreach (var child in parent.GetComponentsInChildren<UnityEngine.Rendering.Universal.ShadowCaster2D>())
             {
                 if (!IsVisable(child.GetComponent<Collider2D>()))
                 {

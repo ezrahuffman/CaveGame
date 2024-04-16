@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Experimental.Rendering.Universal;
+
 public class PlayerController : MonoBehaviour
 {
     //Variables
@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float maxMovementSpeed;      //Maximum speed the player can reach
     public float rotSmooth;
     public GameObject playerObject;
-    public Light2D torch;
+    public UnityEngine.Rendering.Universal.Light2D torch;
 
     private bool dashing = false;
     private bool upKey = false;
@@ -447,7 +447,7 @@ public class PlayerController : MonoBehaviour
 
     public void EquipTorch(bool torchEquiped)
     {
-        torch.enabled = torchEquiped;
+        torch.intensity = torchEquiped ? 1 : 0;
         gameController.torchUI.SetActive(torchEquiped);
 
         if (torchEquiped)

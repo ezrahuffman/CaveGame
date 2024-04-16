@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using Pathfinding;
 using UnityEngine.Animations;
 
@@ -93,7 +93,7 @@ public class Enemy_AI : Interactable
         Vector2 playerPos = playerObj.transform.position;
 
         //get perpendicular unit vector
-        Vector2 t = playerObj.transform.parent.GetComponentInChildren<Light2D>().transform.position;
+        Vector2 t = playerObj.transform.parent.GetComponentInChildren<UnityEngine.Rendering.Universal.Light2D>().transform.position;
         Vector2 e = transform.position;
         Vector2 normalDir = new Vector2(-(e.y - t.y), e.x - t.x);
         normalDir = normalDir.normalized * (GetComponent<CircleCollider2D>().radius * transform.localScale.x);

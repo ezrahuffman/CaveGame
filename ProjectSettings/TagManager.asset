@@ -22,7 +22,7 @@ TagManager:
   - 
   - Obstacle
   - 
-  - 
+  - TextureLayer
   - 
   - 
   - 
@@ -45,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor
+    uniqueID: 1099100095
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
