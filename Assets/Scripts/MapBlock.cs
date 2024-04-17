@@ -18,6 +18,8 @@ public class MapBlock : MonoBehaviour
     private static BindingFlags accessFlagsPrivate =
         BindingFlags.NonPublic | BindingFlags.Instance;
 
+    private static int _subdivsions = 2;
+
     void TriangulateSquare(Square square)
     {
         switch (square.configuration)
@@ -125,8 +127,8 @@ public class MapBlock : MonoBehaviour
 
     public void GenerateMesh(Map map)
     {
-        squareGrid = new SquareGrid(map, map.vertexWidth, parentGO);
-        _squareSize = map.vertexWidth;
+        squareGrid = new SquareGrid(map, map.vertexWidth, parentGO, _subdivsions);
+        _squareSize = map.vertexWidth / _subdivsions; // TODO: check this actually works or remove it
         vertices = new List<Vector3>();
         triangles = new List<int>();
 
@@ -443,15 +445,14 @@ public class MapBlock : MonoBehaviour
         public Square[,] squares;
         GameObject _parentGO;
 
-        public SquareGrid(Map map, float squareSize, GameObject parentGO)
+        public SquareGrid(Map map, float squareSize, GameObject parentGO,int subDivisions)
         {
             this.map = map;
             _parentGO = parentGO;
-            int nodeCountX = map.graphArray.Length;
-            int nodeCountY = map.graphArray[0].nodes.Length;
-
+            int nodeCountX = map.graphArray.Length * subDivisions;
+            int nodeCountY = map.graphArray[0].nodes.Length * subDivisions;
             
-
+            squareSize = squareSize / subDivisions;
 
             float mapWidth = nodeCountX * squareSize;
             float mapHeight = nodeCountY * squareSize;
@@ -463,7 +464,9 @@ public class MapBlock : MonoBehaviour
                 for (int y = 0; y < nodeCountY; y++)
                 {
                     Vector3 pos = new Vector3(x * squareSize, y * squareSize, 0); 
-                    controlNodes[x, y] = new ControlNode(pos, map.graphArray[y].nodes[x].Type == NodeType.wall, squareSize);
+                    
+                    // NOTE: the y/subDivisions and x/subDivisions are used to get the correct index from the graph array because we the type of the real node.
+                    controlNodes[x, y] = new ControlNode(pos, map.graphArray[y/subDivisions].nodes[x/subDivisions].Type == NodeType.wall, squareSize);
                 }
             }
 
