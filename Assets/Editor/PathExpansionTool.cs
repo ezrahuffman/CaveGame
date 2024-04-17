@@ -3,7 +3,6 @@ using UnityEditor;
 
 public class PathExpansionTool
 {
-    // Start is called before the first frame update
     [MenuItem("MyTools/ExpandPath")]
     static void OnClick()
     {

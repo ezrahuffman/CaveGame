@@ -8,10 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 36f911b7afce15045a0bfd32b70f1c65
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/reallySmall.unity
     guid: f0680f0f43566384dbd1784f184c7314
   - enabled: 0
     path: Assets/Scenes/largeMap.unity
     guid: 5c2b69d4659d1a74090da320c0290234
+  - enabled: 1
+    path: Assets/Scenes/50x50_LevelOne.unity
+    guid: 1d8816f47be39ca4eb2c16987f79fbca
   m_configObjects: {}
