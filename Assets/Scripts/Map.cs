@@ -52,11 +52,11 @@ public class Map : MonoBehaviour
 
     public void Start()
     {
-        gameObject.AddComponent<SpriteRenderer>();
+        //gameObject.AddComponent<SpriteRenderer>();
         //gameObject.GetComponent<SpriteRenderer>().sprite = Sprite.Create(new Texture2D((int)mesh.bounds.size.x, (int)mesh.bounds.size.y), new Rect(centerVertex.position, mesh.bounds.size), centerVertex.position);
-        var texture2D = new Texture2D((int)mesh.bounds.size.x, (int)mesh.bounds.size.y);
-        gameObject.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 1);
-        ConvertMeshToSprite(mesh);
+        //var texture2D = new Texture2D((int)mesh.bounds.size.x, (int)mesh.bounds.size.y);
+        //gameObject.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 1);
+        //ConvertMeshToSprite(mesh);
         GenerateDictionary();
     }
 

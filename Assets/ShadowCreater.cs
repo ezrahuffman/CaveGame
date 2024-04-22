@@ -3,7 +3,7 @@ using UnityEngine;
 
 using System.Linq;
 using System.Collections;
-
+using UnityEngine.Rendering.Universal;
 
 public class ShadowCreater : MonoBehaviour
 {
@@ -50,8 +50,9 @@ public class ShadowCreater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 torchPos = torchLight.transform.position;
-        float r = torchLight.pointLightOuterRadius;
+        Light2D torch = FindObjectOfType<PlayerController>().torch;
+        Vector3 torchPos = torch.transform.position;
+        float r = torch.pointLightOuterRadius;
         newList = new HashSet<Collider2D>(Physics2D.OverlapCircleAll(torchPos, r, layerMask));  //get all colliders within radius of torch light
 
         //if shapes list has not changed, don't do anything

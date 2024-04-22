@@ -61,7 +61,7 @@ public class CameraController : MonoBehaviour
             //find player
             playerObject = GameObject.FindGameObjectWithTag("Player");
 
-            Debug.Log("playerobj null");
+            Debug.Log($"playerobj: {playerObject.name}");
 
         }
     }
@@ -125,6 +125,7 @@ public class CameraController : MonoBehaviour
             playerPos.y = yMax;
         }
 
-        transform.position = new Vector3(playerPos.x, playerPos.y, transform.position.z);;
+        transform.position = new Vector3(playerPos.x, playerPos.y, transform.position.z);
+        Debug.Log($"playerpos = {playerPos}");
     }
 }

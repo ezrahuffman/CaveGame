@@ -2,7 +2,20 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
+using System;
+using Unity.Mathematics;
 
+public class Block
+{
+    public List<int> triangles;
+    public List<Vector3> vertices;
+    public Node node { get; private set; }
+    public Block(Node node) {
+        triangles = new List<int>();
+        vertices = new List<Vector3>();
+        this.node = node;
+    }
+}
 
 public class MapBlock : MonoBehaviour
 {
@@ -14,13 +27,14 @@ public class MapBlock : MonoBehaviour
     List<Vector3> VerticiesCollide;
     SpriteRenderer m_Sr;
     LayerMask textureMask = LayerMask.NameToLayer("TextureLayer"); // this should only be used for rendering the mesh texture, not anything else
+    public Material mapMaterial; 
 
     private static BindingFlags accessFlagsPrivate =
         BindingFlags.NonPublic | BindingFlags.Instance;
 
     private static int _subdivsions = 2;
 
-    void TriangulateSquare(Square square)
+    void TriangulateSquare(Square square,Block block)
     {
         switch (square.configuration)
         {
@@ -29,82 +43,82 @@ public class MapBlock : MonoBehaviour
 
             // 1 points:
             case 1:
-                MeshFromPoints(square.centerBot, square.botLeft, square.centerLeft);
+                MeshFromPoints(block, square.centerBot, square.botLeft, square.centerLeft);
                 break;
             case 2:
-                MeshFromPoints(square.centerRight, square.botRight, square.centerBot);
+                MeshFromPoints(block, square.centerRight, square.botRight, square.centerBot);
                 break;
             case 4:
-                MeshFromPoints(square.centerTop, square.topRight, square.centerRight);
+                MeshFromPoints(block, square.centerTop, square.topRight, square.centerRight);
                 break;
             case 8:
-                MeshFromPoints(square.topLeft, square.centerTop, square.centerLeft);
+                MeshFromPoints(block, square.topLeft, square.centerTop, square.centerLeft);
                 break;
 
             // 2 points:
             case 3:
-                MeshFromPoints(square.centerRight, square.botRight, square.botLeft, square.centerLeft);
+                MeshFromPoints(block, square.centerRight, square.botRight, square.botLeft, square.centerLeft);
                 break;
             case 6:
-                MeshFromPoints(square.centerTop, square.topRight, square.botRight, square.centerBot);
+                MeshFromPoints(block, square.centerTop, square.topRight, square.botRight, square.centerBot);
                 break;
             case 9:
-                MeshFromPoints(square.topLeft, square.centerTop, square.centerBot, square.botLeft);
+                MeshFromPoints(block, square.topLeft, square.centerTop, square.centerBot, square.botLeft);
                 break;
             case 12:
-                MeshFromPoints(square.topLeft, square.topRight, square.centerRight, square.centerLeft);
+                MeshFromPoints(block, square.topLeft, square.topRight, square.centerRight, square.centerLeft);
                 break;
             case 5:
-                MeshFromPoints(square.centerTop, square.topRight, square.centerRight, square.centerBot, square.botLeft, square.centerLeft);
+                MeshFromPoints(block, square.centerTop, square.topRight, square.centerRight, square.centerBot, square.botLeft, square.centerLeft);
                 break;
             case 10:
-                MeshFromPoints(square.topLeft, square.centerTop, square.centerRight, square.botRight, square.centerBot, square.centerLeft);
+                MeshFromPoints(block, square.topLeft, square.centerTop, square.centerRight, square.botRight, square.centerBot, square.centerLeft);
                 break;
 
             // 3 point:
             case 7:
-                MeshFromPoints(square.centerTop, square.topRight, square.botRight, square.botLeft, square.centerLeft);
+                MeshFromPoints(block, square.centerTop, square.topRight, square.botRight, square.botLeft, square.centerLeft);
                 break;
             case 11:
-                MeshFromPoints(square.topLeft, square.centerTop, square.centerRight, square.botRight, square.botLeft);
+                MeshFromPoints(block, square.topLeft, square.centerTop, square.centerRight, square.botRight, square.botLeft);
                 break;
             case 13:
-                MeshFromPoints(square.topLeft, square.topRight, square.centerRight, square.centerBot, square.botLeft);
+                MeshFromPoints(block, square.topLeft, square.topRight, square.centerRight, square.centerBot, square.botLeft);
                 break;
             case 14:
-                MeshFromPoints(square.topLeft, square.topRight, square.botRight, square.centerBot, square.centerLeft);
+                MeshFromPoints(block, square.topLeft, square.topRight, square.botRight, square.centerBot, square.centerLeft);
                 break;
 
             // 4 point:
             case 15:
-                MeshFromPoints(square.topLeft, square.topRight, square.botRight, square.botLeft);
+                MeshFromPoints(block, square.topLeft, square.topRight, square.botRight, square.botLeft);
                 break;
         }
     }
 
-    void MeshFromPoints(params Node[] points)
+    void MeshFromPoints(Block block, params MapBlockNode[] points)
     {
         AssignVertices(points);
 
         if (points.Length >= 3)
         {
-            CreateTriangle(points[0], points[1], points[2]);
+            CreateTriangle(points[0], points[1], points[2], block);
         }
         if (points.Length >= 4)
         {
-            CreateTriangle(points[0], points[2], points[3]);
+            CreateTriangle(points[0], points[2], points[3], block);
         }
         if (points.Length >= 5)
         {
-            CreateTriangle(points[0], points[3], points[4]);
+            CreateTriangle(points[0], points[3], points[4], block);
         }
         if (points.Length == 6)
         {
-            CreateTriangle(points[0], points[4], points[5]);
+            CreateTriangle(points[0], points[4], points[5], block);
         }
     }
 
-    void AssignVertices(Node[] points)
+    void AssignVertices(MapBlockNode[] points)
     {
         foreach (var point in points)
         {
@@ -118,60 +132,83 @@ public class MapBlock : MonoBehaviour
         }
     }
 
-    void CreateTriangle(Node a, Node b, Node c)
+    void CreateTriangle(MapBlockNode a, MapBlockNode b, MapBlockNode c, Block block)
     {
-        triangles.Add(a.vertexIndex);
-        triangles.Add(b.vertexIndex);
-        triangles.Add(c.vertexIndex);
+        block.triangles.Add(a.vertexIndex);
+        block.triangles.Add(b.vertexIndex);
+        block.triangles.Add(c.vertexIndex);
     }
+    
 
-    public void GenerateMesh(Map map)
+    // Block Corners are the chunks and can be used to parent the sub-meshes too.
+    public void GenerateMesh(Map map, List<Node> blockCorners)
     {
+
+        int tilePerBlock = map.tilesPerBlock;
+        
+        Debug.Log($"blockCorners.size: {blockCorners.Count}");
+
+        List<Block> blocks = new List<Block>();
+        foreach(Node block in blockCorners)
+        {
+            blocks.Add(new Block(block));
+        }
+
         squareGrid = new SquareGrid(map, map.vertexWidth, parentGO, _subdivsions);
         _squareSize = map.vertexWidth / _subdivsions; // TODO: check this actually works or remove it
         vertices = new List<Vector3>();
         triangles = new List<int>();
 
+
+        // TODO: add the triangles created here (i.e. vertices and triangles to the submesh of the blocks
         for (int x = 0; x < squareGrid.squares.GetLength(0); x++)
         {
             for (int y = 0; y < squareGrid.squares.GetLength(1); y++)
             {
-                TriangulateSquare(squareGrid.squares[x, y]);
+                int divisor = tilePerBlock * _subdivsions; ;
+                int blockX = x / divisor;
+                int blockY = y / divisor;
+                int blockIndex = (blockY * map.blockWidth) + blockX;
+                //Debug.Log($"blockIndex({blockIndex}) = (blockY({blockY}) * map.blockWidth({map.blockWidth})) + blockX({blockX}) | x:{x}, y:{y}");
+                Block block = blocks[blockIndex];
+
+                // use the block node to asign the triangle to
+                TriangulateSquare(squareGrid.squares[x, y], block);
             }
         }
 
         if (parentGO.GetComponent<MeshFilter>() == null)
         {
-
-            Mesh mesh = new Mesh();
-            //parentGO.AddComponent<MeshFilter>();
-            //parentGO.AddComponent<MeshRenderer>();
-            //parentGO.GetComponent<MeshFilter>().mesh = mesh;
-            mesh.vertices = vertices.ToArray();
-            //triangles.Reverse();
-            mesh.triangles = triangles.ToArray();
-            Debug.Log("Mesh uvs");
-            foreach (var v in mesh.uv)
+            int count  = 0;
+            foreach (Block block in blocks)
             {
-                print(v);
-            }
-            mesh.RecalculateNormals();
-            PolygonCollider2D polygonCollider2D = parentGO.AddComponent<PolygonCollider2D>();
 
-            MakeCollisions(mesh, polygonCollider2D);
-            mesh.RecalculateNormals();
-            mesh.RecalculateTangents();
-            map.mesh = mesh;
-            map.gameObject.layer = textureMask;
+                Mesh mesh = new Mesh();
 
-            Sprite sprite = ConvertMeshToSprite(mesh, 1024, 1024);
-            SpriteRenderer spriteRenderer = map.GetComponent<SpriteRenderer>();
-            if(spriteRenderer == null)
-            {
-                spriteRenderer = map.gameObject.AddComponent<SpriteRenderer>();
+                mesh.vertices = vertices.ToArray();
+                mesh.triangles = block.triangles.ToArray();
+                
+                mesh.RecalculateNormals();
+                PolygonCollider2D polygonCollider2D = parentGO.AddComponent<PolygonCollider2D>();
+
+                MakeCollisions(mesh, polygonCollider2D);
+                mesh.RecalculateNormals();
+                mesh.RecalculateTangents();
+
+                block.node.gameObject.AddComponent<MeshRenderer>().material = mapMaterial;
+                block.node.gameObject.AddComponent<MeshFilter>().mesh = mesh;
+                //map.gameObject.layer = textureMask;
+                count++;
             }
-            spriteRenderer.sprite = sprite;
-            FindObjectOfType<GameController>().GetComponent<MeshFilter>().mesh = mesh;
+
+            //Sprite sprite = ConvertMeshToSprite(mesh, 1024, 1024);
+            //SpriteRenderer spriteRenderer = map.GetComponent<SpriteRenderer>();
+            //if(spriteRenderer == null)
+            //{
+            //    spriteRenderer = map.gameObject.AddComponent<SpriteRenderer>();
+            //}
+            //spriteRenderer.sprite = sprite;
+            //FindObjectOfType<GameController>().GetComponent<MeshFilter>().mesh = mesh;
 
             
 
@@ -375,27 +412,27 @@ public class MapBlock : MonoBehaviour
     #endregion
 
 
-    public class Node
+    public class MapBlockNode
     {
         public Vector3 pos;
         public int vertexIndex = -1;
 
-        public Node(Vector3 pos)
+        public MapBlockNode(Vector3 pos)
         {
             this.pos = pos;
         }
     }
 
-    public class ControlNode : Node
+    public class ControlNode : MapBlockNode
     {
         public bool active;
-        public Node above, right;
+        public MapBlockNode above, right;
 
         public ControlNode(Vector3 pos, bool active, float squareSize) : base(pos)
         {
             this.active = active;
-            above = new Node(pos + Vector3.up * squareSize / 2);
-            right = new Node(pos + Vector3.right * squareSize / 2);
+            above = new MapBlockNode(pos + Vector3.up * squareSize / 2);
+            right = new MapBlockNode(pos + Vector3.right * squareSize / 2);
 
         }
     }
@@ -403,7 +440,7 @@ public class MapBlock : MonoBehaviour
     public class Square
     {
         public ControlNode topLeft, topRight, botRight, botLeft;
-        public Node centerTop, centerRight, centerBot, centerLeft;
+        public MapBlockNode centerTop, centerRight, centerBot, centerLeft;
         public int configuration; //possible 16 ways to arrange the square 
 
         public Square(ControlNode topLeft, ControlNode topRight, ControlNode botRight, ControlNode botLeft)

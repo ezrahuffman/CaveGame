@@ -88,6 +88,8 @@ public class MapMaker : ScriptableObject
     private Dictionary<int, Node> floorBlocks;         //list containing floor blocks
     private List<Node> blockCorners;        //list of the 40X40 block corners
 
+    [SerializeField] private Material _mapMaterial;
+
     [System.Serializable]
     public class NodeList
     {
@@ -247,8 +249,9 @@ public class MapMaker : ScriptableObject
         StoreInfo(map);
 
         MapBlock mapBlock = new MapBlock();
+        mapBlock.mapMaterial = _mapMaterial;
         mapBlock.parentGO = map.gameObject;
-        mapBlock.GenerateMesh(map);
+        mapBlock.GenerateMesh(map, blockCorners);
 
         timer = Time.realtimeSinceStartup - timer;
         Debug.Log("MapMaker took: " + timer + "s");
